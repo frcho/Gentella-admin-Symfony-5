@@ -41,7 +41,6 @@ class BlogPost
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
      */
     private $blogImage;
 

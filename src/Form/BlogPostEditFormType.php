@@ -1,6 +1,8 @@
 <?php
 
+
 namespace App\Form;
+
 
 use App\Entity\BlogPost;
 use App\Entity\Categorie;
@@ -17,8 +19,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Validator\Constraints\File;
 
-
-class BlogPostFormType extends AbstractType
+class BlogPostEditFormType extends AbstractType
 {
     /**
      * @var Security
@@ -41,8 +42,7 @@ class BlogPostFormType extends AbstractType
             ->add('blogImage', FileType::class, [
                 'label' => 'Image',
                 'mapped' => false,
-                'required' => true,
-                "attr"=>["placeholder"=>"Choisir une image"],
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '5120k',
@@ -84,13 +84,13 @@ class BlogPostFormType extends AbstractType
                 "label"=>"Contenu",
                 "attr"=>["class"=>"summernote","rows"=>"6"]
             ]);
-            if($this->security->isGranted("ROLE_EDITORIAL")){
-                $builder->add("valid",CheckboxType::class,[
-                    "label"=>"Activé ?",
-                    "attr"=>["class"=>"iCheck-helper"],
-                    "required"=>false
-                ]);
-            }
+        if($this->security->isGranted("ROLE_EDITORIAL")){
+            $builder->add("valid",CheckboxType::class,[
+                "label"=>"Activé ?",
+                "attr"=>["class"=>"iCheck-helper"],
+                "required"=>false
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)

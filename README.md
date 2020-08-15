@@ -14,9 +14,11 @@ Gentelella A skeleton application with user account functionality on the foundat
 - Administration Dashboard with Gentelella Admin Theme
 - Responsive Layout
 - Bootstrap 4
-- USER/ROLES CRUD with ajax and symfony form system
+- USER/ROLES CRUD with ajax and symfony form system 
+- Password reset and send email, with link to reset the password
 - Authentication system
-- Powerful blog management module (CRUD, Change histrory, access control for Writers and Editors )
+- Powerful blog management module (CRUD, Change histrory, file upload access control for Writers and Editors )
+- Translation functionality (Easy to set up whatever language you need/use)
 
 # **Requirements**
 - PHP >= 7.4
@@ -31,17 +33,24 @@ Mamour Wane (Mamless) co-founder of [ONETECHSN](https://onetechsn.com)
 Gentelella is licensed under The MIT License (MIT). Which means that you can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. But you always need to state that Colorlib is the original author of this template.
 
 # **SETUP**
-1. Create database using the next command:
+1 - Install all dependencies :
+
+~~~
+    composer install
+~~~
+
+
+2 - Create database using the next command:
 ~~~
     php bin/console doctrine:schema:create
 ~~~
 
-2. Create scheme using migration command:
+3 - Create scheme using migration command:
 ~~~
     php bin/console doctrine:migrations:migrate
 ~~~
 
-You will need to populate your database using fixtures for login.
+4 - You will need to populate your database using fixtures for login.
 
 Run:
 

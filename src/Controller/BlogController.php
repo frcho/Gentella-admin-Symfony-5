@@ -7,10 +7,12 @@ namespace App\Controller;
 use App\Entity\BlogPost;
 use App\Entity\Historique;
 use App\Entity\OldPost;
+use App\Form\BlogPostEditFormType;
 use App\Form\BlogPostFormType;
 use App\Form\OldPostFormType;
 use App\Repository\BlogPostRepository;
 use App\Repository\HistoriqueRepository;
+use App\Services\UploadHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Container\ContainerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -33,12 +35,17 @@ class BlogController extends BaseController
      * @var HistoriqueRepository
      */
     private $historiqueRepository;
+    /**
+     * @var UploadHelper
+     */
+    private $uploadHelper;
 
-    public function __construct(BlogPostRepository $blogPostRepository,EntityManagerInterface $entityManager, HistoriqueRepository $historiqueRepository)
+    public function __construct(BlogPostRepository $blogPostRepository,EntityManagerInterface $entityManager, HistoriqueRepository $historiqueRepository, UploadHelper $uploadHelper)
     {
         $this->blogPostRepository = $blogPostRepository;
         $this->entityManager = $entityManager;
         $this->historiqueRepository = $historiqueRepository;
+        $this->uploadHelper = $uploadHelper;
     }
 
 
@@ -56,21 +63,34 @@ class BlogController extends BaseController
      * @IsGranted("ROLE_WRITER")
      */
     public function newBlogPost(Request $request){
+        $historique = new Historique();
+        $historique->setUser($this->getUser())
+            ->setAction("Creation");
         $blogPost = new BlogPost();
         $form = $this->createForm(BlogPostFormType::class,$blogPost);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
             /** @var  BlogPost $blogPost */
             $blogPost = $form->getData();
+            $blogImage = $form["blogImage"]->getData();
+            /* If want to add more specific img validation
+             * if (!$this->uploadHelper->validateImg($blogImage)){
+
+            }*/
+
+            $image= $this->uploadHelper->uploadBlogImage($blogImage,$blogPost->getTitre());
             $blogPost->setDeleted(false)
                 ->setCreator($this->getUser())
+                ->setBlogImage($image->getFilename())
             ;
             if ($blogPost->getValid() == null){
                 $blogPost->setValid(false);
             }
             $this->entityManager->persist($blogPost);
+            $historique->setBlogPost($blogPost);
+            $this->entityManager->persist($historique);
             $this->entityManager->flush();
-            $this->addFlash("success","Categorie ajouté");
+            $this->addFlash("success","Blog ajouté");
             return $this->redirectToRoute("app_admin_blogPosts");
 
         }
@@ -99,9 +119,19 @@ class BlogController extends BaseController
             ->setBlogPost($blogPost)
             ->setOldPost($oldPost);
         $this->entityManager->persist($historique);
-        $form = $this->createForm(BlogPostFormType::class,$blogPost);
+        $form = $this->createForm(BlogPostEditFormType::class,$blogPost);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
+            if ($form["blogImage"]->getData()){
+                $blogImage = $form["blogImage"]->getData();
+                $image= $this->uploadHelper->uploadBlogImage($blogImage,$blogPost->getTitre());
+                $blogPost->setBlogImage($image->getFilename());
+            }
+
+            /* If want to add more specific img validation
+             * if (!$this->uploadHelper->validateImg($blogImage)){
+
+            }*/
             $this->entityManager->persist($blogPost);
             $this->entityManager->flush();
             $this->addFlash("success","Post modifié");

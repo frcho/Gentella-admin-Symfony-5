@@ -28,3 +28,7 @@ node_modules
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+
+###> phpstorm project files
+/.idea/
+>>>>>>> upstream/master

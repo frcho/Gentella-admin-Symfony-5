@@ -123,8 +123,6 @@ class CategorieController extends BaseController
     }
 
     //TODO: review role/access control for writers
-    //TODO: standalone history management
     //TODO: Blog table add needed fields
-
 
 }

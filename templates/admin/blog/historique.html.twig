@@ -36,7 +36,11 @@
                                         <td>{{ historique.actionDate|date("d/m/Y h:i:s") }}</td>
                                         <td>{{ historique.user.nomComplet }} ({{ historique.user.id }})</td>
                                         <td>
-                                            <a href="{{ path('app_admin_historique_undo', {'id': historique.id}) }}" class="btn btn-primary">Annuler</a>
+                                            {% if historique.action != "Creation"  %}
+                                                <a href="{{ path('app_admin_historique_undo', {'id': historique.id}) }}" class="btn btn-primary">Annuler</a>
+                                            {% else %}
+                                                No action
+                                            {% endif %}
                                         </td>
                                         <td>
                                             {% if historique.oldPost %}
