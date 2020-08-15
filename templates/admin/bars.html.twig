@@ -38,7 +38,13 @@
                         </li>
                         {% endif %}
                         {% if is_granted("ROLE_WRITER") %}
-                        <li><a><i class="fa fa-bookmark"></i>{{ "backend.menu.categories"|trans }} <span class="fa fa-chevron-down"></span></a>
+                        <li><a><i class="fa fa-bookmark"></i> Mail <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="{{ path('app_admin_inbox_setup') }}">Inbox</a></li>
+                                {# <li><a href="{{ path('app_admin_inbox') }}">Inbox</a></li> #}
+                            </ul>
+                        </li>
+                        {# <li><a><i class="fa fa-bookmark"></i>{{ "backend.menu.categories"|trans }} <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="{{ path('app_admin_categories') }}">{{ "backend.menu.manage"|trans }}</a></li>
                             </ul>
@@ -47,7 +53,7 @@
                             <ul class="nav child_menu">
                                 <li><a href="{{ path('app_admin_blogPosts') }}">{{ "backend.menu.manage"|trans }}</a></li>
                             </ul>
-                        </li>
+                        </li> #}
                         {% endif %}
                     </ul>
                 </div>

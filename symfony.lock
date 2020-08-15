@@ -1,4 +1,7 @@
 {
+    "balgor/mailserver-autodiscovery": {
+        "version": "1.1.2"
+    },
     "behat/transliterator": {
         "version": "v1.3.0"
     },
@@ -148,6 +151,9 @@
     "php": {
         "version": "7.4"
     },
+    "php-imap/php-imap": {
+        "version": "2.0.3"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -159,6 +165,18 @@
     },
     "psr/log": {
         "version": "1.1.3"
+    },
+    "secit-pl/imap-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "2303e00839856f36b1829d0b189e5d959153aefb"
+        },
+        "files": [
+            "config/packages/imap.yaml"
+        ]
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",

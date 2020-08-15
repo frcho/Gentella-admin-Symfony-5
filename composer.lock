@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09e350234349b0756ee574284d883053",
+    "content-hash": "ea5b8ac75f9f2e2295d2aa6c7aed6291",
     "packages": [
+        {
+            "name": "balgor/mailserver-autodiscovery",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Balgor/php-mailserver-autodiscovery.git",
+                "reference": "4c6e591aab0c72e1f88e05b10bfc425a8ece3acc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Balgor/php-mailserver-autodiscovery/zipball/4c6e591aab0c72e1f88e05b10bfc425a8ece3acc",
+                "reference": "4c6e591aab0c72e1f88e05b10bfc425a8ece3acc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Balgor\\MailServerAutodiscovery\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Matej Smisek",
+                    "email": "matej.smisek@voidmass.com",
+                    "homepage": "https://voidmass.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Discover imap, pop3 and smtp servers from email address",
+            "homepage": "https://github.com/Balgor/php-mailserver-autodiscovery",
+            "keywords": [
+                "email",
+                "imap",
+                "mail",
+                "pop3",
+                "smtp"
+            ],
+            "time": "2019-01-16T11:14:26+00:00"
+        },
         {
             "name": "behat/transliterator",
             "version": "v1.3.0",
@@ -2082,6 +2128,49 @@
             "time": "2020-04-13T14:42:16+00:00"
         },
         {
+            "name": "php-imap/php-imap",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barbushin/php-imap.git",
+                "reference": "cc1a49a3f68090db182183c59ffbc09055d59f5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barbushin/php-imap/zipball/cc1a49a3f68090db182183c59ffbc09055d59f5b",
+                "reference": "cc1a49a3f68090db182183c59ffbc09055d59f5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PhpImap": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Barbushin",
+                    "email": "barbushin@gmail.com",
+                    "homepage": "http://linkedin.com/in/barbushin"
+                }
+            ],
+            "description": "PHP class to access mailbox by POP3/IMAP/NNTP using IMAP extension",
+            "homepage": "https://github.com/barbushin/php-imap",
+            "keywords": [
+                "imap",
+                "mail",
+                "php"
+            ],
+            "time": "2015-09-16T07:40:39+00:00"
+        },
+        {
             "name": "psr/cache",
             "version": "1.0.1",
             "source": {
@@ -2268,6 +2357,57 @@
                 "psr-3"
             ],
             "time": "2020-03-23T09:12:05+00:00"
+        },
+        {
+            "name": "secit-pl/imap-bundle",
+            "version": "1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/secit-pl/imap-bundle.git",
+                "reference": "68f33dfa83be5ee9664be19507a5bf1f7e66c73d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/secit-pl/imap-bundle/zipball/68f33dfa83be5ee9664be19507a5bf1f7e66c73d",
+                "reference": "68f33dfa83be5ee9664be19507a5bf1f7e66c73d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "php-imap/php-imap": "~2.0|~3.0",
+                "symfony/dependency-injection": "~2.8|~3.0|~4.0|~5.0",
+                "symfony/framework-bundle": "~2.8|~3.0|~4.0|~5.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SecIT\\ImapBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tomasz Gemza",
+                    "email": "t.gemza@secit.pl"
+                }
+            ],
+            "description": "PHP-IMAP Symfony integration.",
+            "homepage": "http://secit.pl",
+            "keywords": [
+                "bundle",
+                "imap",
+                "php-imap",
+                "symfony"
+            ],
+            "time": "2019-12-19T13:51:44+00:00"
         },
         {
             "name": "sensio/framework-extra-bundle",

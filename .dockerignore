@@ -1,0 +1,43 @@
+**/*.log
+**/*.md
+**/*.php~
+**/._*
+**/.dockerignore
+**/.DS_Store
+**/.git/
+**/.gitattributes
+**/.gitignore
+**/.gitmodules
+**/Thumbs.db
+.editorconfig
+/.env.local
+/.env.local.php
+/.env.*.local
+.php_cs.cache
+bin/*
+!bin/console
+.docker/.data/
+helm/
+public/bundles/
+var/
+vendor/
+###>development files###
+php7.x-apache-supervisor
+docker-compose.yml
+docker-compose.prod.yml
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+.docker/.data
+/nbproject
